@@ -3644,7 +3644,9 @@ pre .id {
   }
 }
 
+
 /*! PhotoSwipe Default UI CSS by Dmitry Semenov | photoswipe.com | MIT license */
+
 .pswp__button {
   width: 44px;
   height: 44px;
@@ -4154,7 +4156,9 @@ a.pswp__share--download:hover {
   background: none
 }
 
+
 /*! PhotoSwipe main CSS by Dmitry Semenov | photoswipe.com | MIT license */
+
 .pswp {
   display: none;
   position: absolute;
@@ -4318,4 +4322,112 @@ a.pswp__share--download:hover {
 .pswp__error-msg a {
   color: #ccc;
   text-decoration: underline
+}
+
+
+/* @zhang */
+
+.category-all-page {
+  margin: 30px 40px 30px 40px;
+  position: relative;
+  min-height: 70vh;
+}
+
+.category-all-page h2 {
+  margin: 20px 0;
+}
+
+.category-all-page .category-all-title {
+  text-align: center;
+}
+
+.category-all-page .category-all {
+  margin-top: 20px;
+}
+
+.category-all-page .category-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-all-page .category-list-item-list-item {
+  margin: 10px 15px;
+}
+
+.category-all-page .category-list-item-list-count {
+  color: grey;
+}
+
+.category-all-page .category-list-item-list-count:before {
+  display: inline;
+  content: " (";
+}
+
+.category-all-page .category-list-item-list-count:after {
+  display: inline;
+  content: ") ";
+}
+
+.category-all-page .category-list-item {
+  margin: 10px 10px;
+}
+
+.category-all-page .category-list-count {
+  color: grey;
+}
+
+.category-all-page .category-list-count:before {
+  display: inline;
+  content: " (";
+}
+
+.category-all-page .category-list-count:after {
+  display: inline;
+  content: ") ";
+}
+
+.category-all-page .category-list-child {
+  padding-left: 10px;
+}
+
+
+/*tag-cloud*/
+
+.tag-cloud {
+  text-align: left;
+  background-color: #fff;
+  padding: 30px 40px 30px 40px;
+}
+
+.tag-cloud a {
+  display: inline-block;
+  margin: 10px;
+}
+
+.tag-cloud-subtitle {
+  margin-bottom: 20px;
+}
+
+.tag-cloud-tags {
+  margin-top: 15px;
+}
+
+.tag-cloud-tags a {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+  color: #191919;
+  line-height: normal;
+  padding: 5px 5px 5px 10px;
+  position: relative;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #ccc;
+  font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
+}
+
+.tag-cloud-tags a:hover {
+  opacity: 0.8;
+  background-color: #ccc;
 }
