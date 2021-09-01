@@ -17,8 +17,15 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img1.png">
 <meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img2.png">
+<meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img3.png">
+<meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img4.png">
+<meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img5.png">
+<meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img6.png">
+<meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img7.png">
+<meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img8.png">
+<meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img9.png">
 <meta property="article:published_time" content="2021-08-01T07:40:55.000Z">
-<meta property="article:modified_time" content="2021-08-31T07:57:25.725Z">
+<meta property="article:modified_time" content="2021-09-01T02:42:01.462Z">
 <meta property="article:author" content="jeneen">
 <meta property="article:tag" content="hexo搭建个人博客">
 <meta name="twitter:card" content="summary">
@@ -272,34 +279,24 @@ var _hmt = _hmt || [];
 <p>另外，可能点击文章的标签没有跳转，修改 yilia/layout/_partial/post/tag.ejs 中 a 标签的 href 属性为 <code>&lt;%= config.root %&gt;&lt;%= tag.path %&gt;</code> , 运行命令<code>npm i hexo-generator-json-content --save</code>, 在项目的 _config.yml 中配置如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">  meta: <span class="literal">false</span></span><br><span class="line">  pages: <span class="literal">false</span></span><br><span class="line">  posts:</span><br><span class="line">    title: <span class="literal">true</span></span><br><span class="line">    date: <span class="literal">true</span></span><br><span class="line">    path: <span class="literal">true</span></span><br><span class="line">    text: <span class="literal">false</span></span><br><span class="line">    raw: <span class="literal">false</span></span><br><span class="line">    content: <span class="literal">false</span></span><br><span class="line">    slug: <span class="literal">false</span></span><br><span class="line">    updated: <span class="literal">false</span></span><br><span class="line">    comments: <span class="literal">false</span></span><br><span class="line">    link: <span class="literal">false</span></span><br><span class="line">    permalink: <span class="literal">false</span></span><br><span class="line">    excerpt: <span class="literal">false</span></span><br><span class="line">    categories: <span class="literal">false</span></span><br><span class="line">    tags: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h3 id="11-配置-gitalk-评论？"><a href="#11-配置-gitalk-评论？" class="headerlink" title="11. 配置 gitalk 评论？"></a>11. 配置 gitalk 评论？</h3><ol>
+<li><p>创建一个 OAuth App ： <a target="_blank" rel="noopener" href="https://github.com/settings/applications/new">https://github.com/settings/applications/new</a><br><img src="/2021/08/01/hello-world/img3.png" alt="新建一个 OAuth App"><br>新建完成之后会跳转到如下页面，可以看到 clientID , 需要新建一个 client secrets，<strong>复制保存下来</strong><br><img src="/2021/08/01/hello-world/img4.png" alt="OAuth App 的详情页面"><br>这个页面底部可以修改相关的 Homepage URL 和 Authorization callback URL，如果之后报错可以试着修改修改这两个值。</p>
+</li>
+<li><p>在 yilia/layout/_partial/post/ 下面新建 gitalk.ejs:   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;gitalk-container&quot; style=&quot;padding: 0px 30px 0px 30px;&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">  var gitalk = new Gitalk(&#123;</span><br><span class="line">    clientID: &#x27;&lt;%=theme.gitalk.ClientID%&gt;&#x27;,</span><br><span class="line">    clientSecret: &#x27;&lt;%=theme.gitalk.ClientSecret%&gt;&#x27;,</span><br><span class="line">    repo: &#x27;&lt;%=theme.gitalk.repo%&gt;&#x27;,</span><br><span class="line">    owner: &#x27;&lt;%=theme.gitalk.githubID%&gt;&#x27;,</span><br><span class="line">    admin: [&#x27;&lt;%=theme.gitalk.adminUser%&gt;&#x27;],</span><br><span class="line">    id: md5(location.pathname),</span><br><span class="line">    distractionFreeMode: &#x27;&lt;%=theme.gitalk.distractionFreeMode%&gt;&#x27;</span><br><span class="line">  &#125;)</span><br><span class="line">  gitalk.render(&#x27;gitalk-container&#x27;)</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>其中变量需要在 yilia 的配置文件 _config.yml 中添加</p>
+</li>
+<li><p>yilia/layout/_partial/article.ejs 最后一行 <code>&lt;% &#125; %&gt;</code> 之前插入下面代码：    </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if(theme.gitalk.enable)&#123; %&gt;</span><br><span class="line">  &lt;%- partial(&#x27;post/gitalk&#x27;, &#123;</span><br><span class="line">    key: post.slug,</span><br><span class="line">    title: post.title,</span><br><span class="line">    url: config.url+url_for(post.path)</span><br><span class="line">  &#125;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>配置 yilia 下面的 _config.yml,加入以下代码：    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#6. Gitalk</span></span><br><span class="line">gitalk:</span><br><span class="line">  <span class="built_in">enable</span>:  <span class="literal">true</span>  </span><br><span class="line">  githubID:  xxxx  <span class="comment">#自己的 github 名称   </span></span><br><span class="line">  repo:  blog_comments  <span class="comment">#评论库的地址名称</span></span><br><span class="line">  ClientID:  app_ClientID   <span class="comment">#第一个步骤存下来的 ClientID</span></span><br><span class="line">  ClientSecret:  app_ClientSecret   <span class="comment">#第一个步骤存下来的 ClientSecret</span></span><br><span class="line">  adminUser:  xxxx   <span class="comment">#自己的 github 名称</span></span><br><span class="line">  distractionFreeMode: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>其中评论库的地址名称这里本人改了几回，看网上有的说可以用部署博客的仓库，本人测试了之前创建的两个非空仓库，最后也不晓得是第一步中配置的 Url 的问题还是这边评论仓库找不到的问题，反正报的错是 Not Found（见下图），<br><img src="/2021/08/01/hello-world/img5.png" alt="Error: not Found"><br>主要问题就是仓库的 issues 接口返回 404，所以最后保险起见新建了一个 public 的空仓库 <strong>blog_comments</strong>，新建好之后需要确保 issues 功能打开了, 到仓库的 settings 下面查看，<br><img src="/2021/08/01/hello-world/img6.png" alt="blog_comments"></p>
+</li>
+<li><p>以上都配置好后，本地部署可以看到如下图：<br><img src="/2021/08/01/hello-world/img7.png" alt="github 登录"><br>点击使用 github 登录按钮授权即可。</p>
+</li>
+<li><p>第五步的时候即可部署查看，<code>hexo cl &amp; hexo g &amp; hexo d</code><br>如果还有问题，请仔细查看 第四步中配置的评论仓库地址 和 第一步中 Homepage URL 和 Authorization callback URL，可以尝试修改，本人就是不停修改之后才可以的 (一把心酸┳＿┳, 开心的是搞好啦，嘿嘿)，评论一个，见下图：<br><img src="/2021/08/01/hello-world/img8.png" alt="效果图"><br>查看 blog_comments仓库的 issues 页面：<br><img src="/2021/08/01/hello-world/img9.png" alt="仓库 issues">   </p>
+</li>
+</ol>
 
                                             
 
@@ -476,7 +473,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">创建一个文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">运行服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">更新静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">发布到远程服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%94%A8%E6%88%B7%E5%90%8D%E7%A7%B0%EF%BC%9F-%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1. 如何配置好用户名称？ 用户头像？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%90%AD%E5%BB%BA%E5%AE%8C-Hexo-github-%E5%90%8E%EF%BC%8C%E7%BC%96%E5%86%99%E4%BA%86%E7%AC%AC%E4%B8%80%E4%B8%AA-md%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8F%91%E7%8E%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE%E6%B2%A1%E6%9C%89%E4%B8%8A%E4%BC%A0%E5%BA%93%EF%BC%8C%E6%AD%A4%E4%BB%A3%E7%A0%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E7%BC%96%E8%BE%91%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 搭建完 Hexo + github 后，编写了第一个 .md，但是发现本项目没有上传库，此代码无法同步编辑？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%96%87%E7%AB%A0%E7%82%B9%E5%87%BB%E8%BF%9B%E5%85%A5%EF%BC%8C%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%87%BA%E6%9D%A5%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3. 文章点击进入，图片显示不出来？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%A2%84%E8%A7%88%E6%97%B6%E6%80%8E%E4%B9%88%E5%88%87%E6%96%AD-md-%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%EF%BC%8C%E7%82%B9%E5%87%BB%E5%B1%95%E7%A4%BA%E6%9B%B4%E5%A4%9A%E6%89%8D%E6%98%BE%E7%A4%BA%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">4. 预览时怎么切断 md 文章内容，点击展示更多才显示？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%8E%E4%B9%88%E5%88%A0%E9%99%A4%E6%96%87%E7%AB%A0%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">5. 怎么删除文章？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-md-%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E6%80%8E%E4%B9%88%E7%9B%B8%E4%BA%92%E5%BC%95%E7%94%A8%EF%BC%9F"><span class="toc-number">2.6.</span> <span class="toc-text">6. md 站内文章怎么相互引用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">7. 怎么进行站内文章分类？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E5%B0%8F%E7%9B%AE%E5%BD%95%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">8. 怎么显示文章小目录？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%B8%8D%E7%9F%A5%E9%81%93%E5%92%8B%E5%BC%84%E7%9A%84%EF%BC%8C%E9%83%A8%E7%BD%B2%E4%B9%8B%E5%90%8E%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE-Cannot-GET"><span class="toc-number">2.9.</span> <span class="toc-text">9. 不知道咋弄的，部署之后本地访问 Cannot GET &#x2F; ??</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE-tags-%EF%BC%9F"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置 tags ？</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">创建一个文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">运行服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">更新静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">发布到远程服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%94%A8%E6%88%B7%E5%90%8D%E7%A7%B0%EF%BC%9F-%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1. 如何配置好用户名称？ 用户头像？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%90%AD%E5%BB%BA%E5%AE%8C-Hexo-github-%E5%90%8E%EF%BC%8C%E7%BC%96%E5%86%99%E4%BA%86%E7%AC%AC%E4%B8%80%E4%B8%AA-md%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8F%91%E7%8E%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE%E6%B2%A1%E6%9C%89%E4%B8%8A%E4%BC%A0%E5%BA%93%EF%BC%8C%E6%AD%A4%E4%BB%A3%E7%A0%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E7%BC%96%E8%BE%91%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 搭建完 Hexo + github 后，编写了第一个 .md，但是发现本项目没有上传库，此代码无法同步编辑？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%96%87%E7%AB%A0%E7%82%B9%E5%87%BB%E8%BF%9B%E5%85%A5%EF%BC%8C%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%87%BA%E6%9D%A5%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3. 文章点击进入，图片显示不出来？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%A2%84%E8%A7%88%E6%97%B6%E6%80%8E%E4%B9%88%E5%88%87%E6%96%AD-md-%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%EF%BC%8C%E7%82%B9%E5%87%BB%E5%B1%95%E7%A4%BA%E6%9B%B4%E5%A4%9A%E6%89%8D%E6%98%BE%E7%A4%BA%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">4. 预览时怎么切断 md 文章内容，点击展示更多才显示？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%8E%E4%B9%88%E5%88%A0%E9%99%A4%E6%96%87%E7%AB%A0%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">5. 怎么删除文章？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-md-%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E6%80%8E%E4%B9%88%E7%9B%B8%E4%BA%92%E5%BC%95%E7%94%A8%EF%BC%9F"><span class="toc-number">2.6.</span> <span class="toc-text">6. md 站内文章怎么相互引用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">7. 怎么进行站内文章分类？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E5%B0%8F%E7%9B%AE%E5%BD%95%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">8. 怎么显示文章小目录？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%B8%8D%E7%9F%A5%E9%81%93%E5%92%8B%E5%BC%84%E7%9A%84%EF%BC%8C%E9%83%A8%E7%BD%B2%E4%B9%8B%E5%90%8E%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE-Cannot-GET"><span class="toc-number">2.9.</span> <span class="toc-text">9. 不知道咋弄的，部署之后本地访问 Cannot GET &#x2F; ??</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE-tags-%EF%BC%9F"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置 tags ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E9%85%8D%E7%BD%AE-gitalk-%E8%AF%84%E8%AE%BA%EF%BC%9F"><span class="toc-number">2.11.</span> <span class="toc-text">11. 配置 gitalk 评论？</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -604,15 +601,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面向对象    面向过程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Three.js  3D</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">threejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面向对象    面向过程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,11 +621,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue  vue.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">hexo搭建个人博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo搭建个人博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">vue  vue.js</a>
               </li>
             
             <div class="clearfix"></div>
