@@ -4286,3 +4286,17 @@ a.pswp__share--download:hover {
     opacity: 0.8;
     background-color: #ccc;
 }
+
+nav.header-other {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    text-align: right;
+    padding: 5px;
+}
+
+.post-count {
+    color: #ccc;
+    font-size: 12px;
+}
