@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zx1001011.github.io">
-  <title>本人利用hexo搭建个人博客的问题记录 | 个人博客</title>
+  <title>hexo搭建个人博客的问题记录 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="相关链接： Hexo、 documentation、 troubleshooting、GitHub提示： 该文章较长，可以通过 ctrl + F 搜索想查找的问题或者通过小目录查看">
 <meta property="og:type" content="article">
-<meta property="og:title" content="本人利用hexo搭建个人博客的问题记录">
+<meta property="og:title" content="hexo搭建个人博客的问题记录">
 <meta property="og:url" content="https://zx1001011.github.io/2021/08/01/hello-world/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="相关链接： Hexo、 documentation、 troubleshooting、GitHub提示： 该文章较长，可以通过 ctrl + F 搜索想查找的问题或者通过小目录查看">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img12.png">
 <meta property="og:image" content="https://zx1001011.github.io/2021/08/01/hello-world/img13.png">
 <meta property="article:published_time" content="2021-08-01T07:40:55.000Z">
-<meta property="article:modified_time" content="2021-09-01T07:03:41.007Z">
+<meta property="article:modified_time" content="2021-09-02T06:01:40.741Z">
 <meta property="article:author" content="jeneen">
 <meta property="article:tag" content="hexo搭建个人博客">
 <meta name="twitter:card" content="summary">
@@ -189,7 +189,7 @@ var _hmt = _hmt || [];
 </div>
 </nav>
 <nav class="header-other"> <span
-    class="post-count">文章|字数:6|5k</span>
+    class="post-count">文章|字数:7|5.2k</span>
 </nav>
 </header>
 </div>
@@ -277,7 +277,7 @@ var _hmt = _hmt || [];
   
   
     <h1 class="article-title" itemprop="name">
-      本人利用hexo搭建个人博客的问题记录
+      hexo搭建个人博客的问题记录
     </h1>
   
 
@@ -289,9 +289,9 @@ var _hmt = _hmt || [];
   
   <div class="post-count">
     <i class="fa fa-book" aria-hidden="true"></i> 字数：
-    2.9k字&nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-hourglass-start" aria-hidden="true"></i>
+    3k字&nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-hourglass-start" aria-hidden="true"></i>
     阅读时长：
-    13min&nbsp; | &nbsp;<i class="fa fa-user" aria-hidden="true"></i> 阅读量：
+    14min&nbsp; | &nbsp;<i class="fa fa-user" aria-hidden="true"></i> 阅读量：
     <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次
   </div>
   
@@ -380,30 +380,9 @@ var _hmt = _hmt || [];
 在 <code>.foot-right</code> 下面加入：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-eye&quot;</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> : <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;busuanzi_value_site_pv&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> | <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-user&quot;</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;busuanzi_value_site_uv&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 效果如下：<br><img src="/2021/08/01/hello-world/img12.png"></li>
 <li>在 yilia/layout/_partial/article.ejs 中 <code>.article-header</code> 加入：   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if(!index) &#123; %&gt;</span><br><span class="line">  &lt;div class=&quot;post-count&quot;&gt;</span><br><span class="line">    &lt;i class=&quot;fa fa-book&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; 字数：</span><br><span class="line">    &lt;%= wordcount(post.content) %&gt;字&amp;nbsp;&amp;nbsp; | &amp;nbsp;&amp;nbsp;&lt;i class=&quot;fa fa-hourglass-start&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;</span><br><span class="line">    阅读时长：</span><br><span class="line">    &lt;%= min2read(post.content) %&gt;min&amp;nbsp; | &amp;nbsp;&lt;i class=&quot;fa fa-user&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; 阅读量：</span><br><span class="line">    &lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;&lt;/span&gt; 次</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-效果如下：<br><img src="/2021/08/01/hello-world/img13.png"></li>
+效果如下：<br><img src="/2021/08/01/hello-world/img13.png"><h3 id="14-配置个性签名或者激励语"><a href="#14-配置个性签名或者激励语" class="headerlink" title="14. 配置个性签名或者激励语"></a>14. 配置个性签名或者激励语</h3>相信通过以上的几次操作之后，都知道了基本修改哪里的步骤，yilia 这里用了 ejs 的模板引擎，ejs 主要是将 json 配置编译渲染到编写好的模板引擎上，这里修改样式到 mian.xxx.css 中，相关的 html 结构修改在 ejs 文件中，我们新建的 md 文档，指定 layout 就是指定的某个 ejs 文件模板。<br>打开 left-col.ejs 文件，看到 <code>theme.subtitle</code> 是 对应的显示结构，在 主题 yilia 下面的 _config.yml 中配置即可。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#激励语</span></span><br><span class="line">subtitle: 瞄准方向！朝着那里奔去~</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="14-配置个性签名或者激励语"><a href="#14-配置个性签名或者激励语" class="headerlink" title="14. 配置个性签名或者激励语"></a>14. 配置个性签名或者激励语</h3><p>相信通过以上的几次操作之后，都知道了基本修改哪里的步骤，yilia 这里用了 ejs 的模板引擎，ejs 主要是将 json 配置编译渲染到编写好的模板引擎上，这里修改样式到 mian.xxx.css 中，相关的 html 结构修改在 ejs 文件中，我们新建的 md 文档，指定 layout 就是指定的某个 ejs 文件模板。<br>打开 left-col.ejs 文件，看到 <code>theme.subtitle</code> 是 对应的显示结构，在 主题 yilia 下面的 _config.yml 中配置即可。 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#激励语</span></span><br><span class="line">subtitle: 瞄准方向！朝着那里奔去~</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h3 id="15-想要把编写的代码传到-github-仓库上，但是发现-yilia-主题中文件并没有上传？"><a href="#15-想要把编写的代码传到-github-仓库上，但是发现-yilia-主题中文件并没有上传？" class="headerlink" title="15. 想要把编写的代码传到 github 仓库上，但是发现 yilia 主题中文件并没有上传？"></a>15. 想要把编写的代码传到 github 仓库上，但是发现 yilia 主题中文件并没有上传？</h3><p>搞了快一天时间，总是遇到 github push 的问题，<br>不停地 <code>git config --global http.sslVerify &quot;false&quot;</code> ,但是没有用了，虽然themes 下面的 Yilia 文件夹文件上传不上去，但是 复制了一个 yilia_，上传完好，<br>然后想了想，将项目中的主题配置 改成了 yilia_ ，哈哈哈哈哈，可以！！！！</p>
 
     
 
@@ -471,8 +450,8 @@ var _hmt = _hmt || [];
     </li>
     
     <li class="article-tag-list-item">
-      <a href="/categories/其他/文章问题/" class="article-tag-list-link color5">
-        文章问题
+      <a href="/categories/其他/问题/" class="article-tag-list-link color3">
+        问题
       </a>
     </li>
     
@@ -580,7 +559,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">创建一个文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">运行服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">更新静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">发布到远程服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%94%A8%E6%88%B7%E5%90%8D%E7%A7%B0%EF%BC%9F-%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1. 如何配置好用户名称？ 用户头像？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%90%AD%E5%BB%BA%E5%AE%8C-Hexo-github-%E5%90%8E%EF%BC%8C%E7%BC%96%E5%86%99%E4%BA%86%E7%AC%AC%E4%B8%80%E4%B8%AA-md%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8F%91%E7%8E%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE%E6%B2%A1%E6%9C%89%E4%B8%8A%E4%BC%A0%E5%BA%93%EF%BC%8C%E6%AD%A4%E4%BB%A3%E7%A0%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E7%BC%96%E8%BE%91%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 搭建完 Hexo + github 后，编写了第一个 .md，但是发现本项目没有上传库，此代码无法同步编辑？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%96%87%E7%AB%A0%E7%82%B9%E5%87%BB%E8%BF%9B%E5%85%A5%EF%BC%8C%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%87%BA%E6%9D%A5%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3. 文章点击进入，图片显示不出来？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%A2%84%E8%A7%88%E6%97%B6%E6%80%8E%E4%B9%88%E5%88%87%E6%96%AD-md-%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%EF%BC%8C%E7%82%B9%E5%87%BB%E5%B1%95%E7%A4%BA%E6%9B%B4%E5%A4%9A%E6%89%8D%E6%98%BE%E7%A4%BA%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">4. 预览时怎么切断 md 文章内容，点击展示更多才显示？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%8E%E4%B9%88%E5%88%A0%E9%99%A4%E6%96%87%E7%AB%A0%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">5. 怎么删除文章？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-md-%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E6%80%8E%E4%B9%88%E7%9B%B8%E4%BA%92%E5%BC%95%E7%94%A8%EF%BC%9F"><span class="toc-number">2.6.</span> <span class="toc-text">6. md 站内文章怎么相互引用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">7. 怎么进行站内文章分类？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E5%B0%8F%E7%9B%AE%E5%BD%95%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">8. 怎么显示文章小目录？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%B8%8D%E7%9F%A5%E9%81%93%E5%92%8B%E5%BC%84%E7%9A%84%EF%BC%8C%E9%83%A8%E7%BD%B2%E4%B9%8B%E5%90%8E%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE-Cannot-GET"><span class="toc-number">2.9.</span> <span class="toc-text">9. 不知道咋弄的，部署之后本地访问 Cannot GET &#x2F; ??</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE-tags-%EF%BC%9F"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置 tags ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E9%85%8D%E7%BD%AE-gitalk-%E8%AF%84%E8%AE%BA%EF%BC%9F"><span class="toc-number">2.11.</span> <span class="toc-text">11. 配置 gitalk 评论？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%EF%BC%9F"><span class="toc-number">2.12.</span> <span class="toc-text">12. 添加字数统计？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%88%A9%E7%94%A8%E4%B8%8D%E8%92%9C%E5%AD%90%E6%98%BE%E7%A4%BA%E9%98%85%E8%AF%BB%E9%87%8F%E3%80%81%E7%AB%99%E7%82%B9%E8%AE%BF%E9%97%AE%E6%95%B0%EF%BC%9F"><span class="toc-number">2.13.</span> <span class="toc-text">13. 利用不蒜子显示阅读量、站点访问数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E9%85%8D%E7%BD%AE%E4%B8%AA%E6%80%A7%E7%AD%BE%E5%90%8D%E6%88%96%E8%80%85%E6%BF%80%E5%8A%B1%E8%AF%AD"><span class="toc-number">2.14.</span> <span class="toc-text">14. 配置个性签名或者激励语</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">创建一个文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">运行服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">更新静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">发布到远程服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%94%A8%E6%88%B7%E5%90%8D%E7%A7%B0%EF%BC%9F-%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1. 如何配置好用户名称？ 用户头像？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%90%AD%E5%BB%BA%E5%AE%8C-Hexo-github-%E5%90%8E%EF%BC%8C%E7%BC%96%E5%86%99%E4%BA%86%E7%AC%AC%E4%B8%80%E4%B8%AA-md%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8F%91%E7%8E%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE%E6%B2%A1%E6%9C%89%E4%B8%8A%E4%BC%A0%E5%BA%93%EF%BC%8C%E6%AD%A4%E4%BB%A3%E7%A0%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E7%BC%96%E8%BE%91%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 搭建完 Hexo + github 后，编写了第一个 .md，但是发现本项目没有上传库，此代码无法同步编辑？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%96%87%E7%AB%A0%E7%82%B9%E5%87%BB%E8%BF%9B%E5%85%A5%EF%BC%8C%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%87%BA%E6%9D%A5%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3. 文章点击进入，图片显示不出来？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%A2%84%E8%A7%88%E6%97%B6%E6%80%8E%E4%B9%88%E5%88%87%E6%96%AD-md-%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%EF%BC%8C%E7%82%B9%E5%87%BB%E5%B1%95%E7%A4%BA%E6%9B%B4%E5%A4%9A%E6%89%8D%E6%98%BE%E7%A4%BA%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">4. 预览时怎么切断 md 文章内容，点击展示更多才显示？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%8E%E4%B9%88%E5%88%A0%E9%99%A4%E6%96%87%E7%AB%A0%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">5. 怎么删除文章？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-md-%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E6%80%8E%E4%B9%88%E7%9B%B8%E4%BA%92%E5%BC%95%E7%94%A8%EF%BC%9F"><span class="toc-number">2.6.</span> <span class="toc-text">6. md 站内文章怎么相互引用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">7. 怎么进行站内文章分类？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%80%8E%E4%B9%88%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E5%B0%8F%E7%9B%AE%E5%BD%95%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">8. 怎么显示文章小目录？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%B8%8D%E7%9F%A5%E9%81%93%E5%92%8B%E5%BC%84%E7%9A%84%EF%BC%8C%E9%83%A8%E7%BD%B2%E4%B9%8B%E5%90%8E%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE-Cannot-GET"><span class="toc-number">2.9.</span> <span class="toc-text">9. 不知道咋弄的，部署之后本地访问 Cannot GET &#x2F; ??</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE-tags-%EF%BC%9F"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置 tags ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E9%85%8D%E7%BD%AE-gitalk-%E8%AF%84%E8%AE%BA%EF%BC%9F"><span class="toc-number">2.11.</span> <span class="toc-text">11. 配置 gitalk 评论？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%EF%BC%9F"><span class="toc-number">2.12.</span> <span class="toc-text">12. 添加字数统计？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%88%A9%E7%94%A8%E4%B8%8D%E8%92%9C%E5%AD%90%E6%98%BE%E7%A4%BA%E9%98%85%E8%AF%BB%E9%87%8F%E3%80%81%E7%AB%99%E7%82%B9%E8%AE%BF%E9%97%AE%E6%95%B0%EF%BC%9F"><span class="toc-number">2.13.</span> <span class="toc-text">13. 利用不蒜子显示阅读量、站点访问数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E9%85%8D%E7%BD%AE%E4%B8%AA%E6%80%A7%E7%AD%BE%E5%90%8D%E6%88%96%E8%80%85%E6%BF%80%E5%8A%B1%E8%AF%AD"><span class="toc-number">2.14.</span> <span class="toc-text">14. 配置个性签名或者激励语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E6%83%B3%E8%A6%81%E6%8A%8A%E7%BC%96%E5%86%99%E7%9A%84%E4%BB%A3%E7%A0%81%E4%BC%A0%E5%88%B0-github-%E4%BB%93%E5%BA%93%E4%B8%8A%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8F%91%E7%8E%B0-yilia-%E4%B8%BB%E9%A2%98%E4%B8%AD%E6%96%87%E4%BB%B6%E5%B9%B6%E6%B2%A1%E6%9C%89%E4%B8%8A%E4%BC%A0%EF%BC%9F"><span class="toc-number">2.15.</span> <span class="toc-text">15. 想要把编写的代码传到 github 仓库上，但是发现 yilia 主题中文件并没有上传？</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -626,8 +605,8 @@ var _hmt = _hmt || [];
           </div>
         </div>
       </div>
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+      <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> -->
+<!-- </script> -->
 <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.css" rel="stylesheet">
 <footer id="footer">
     <div class="outer">
@@ -715,7 +694,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面向对象    面向过程</a>
+                <a href="javascript:void(0)" class="js-tag color5">面向对象 面向过程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,7 +702,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">threejs</a>
+                <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,7 +722,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue  vue.js</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
