@@ -278,9 +278,10 @@ var _hmt = _hmt || [];
   <div class="article-entry" itemprop="articleBody">
     
     <h3 id="单行文本溢出"><a href="#单行文本溢出" class="headerlink" title="单行文本溢出"></a>单行文本溢出</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 块级元素才能用 overflow */</span></span><br><span class="line"><span class="attribute">display</span>: block; </span><br><span class="line"><span class="comment">/* 不换行 */</span></span><br><span class="line"><span class="attribute">white-space</span>: nowrap; </span><br><span class="line"><span class="comment">/* 溢出隐藏 */</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="comment">/* 溢出省略号显示 */</span></span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure>
-<h3 id="多行文本溢出"><a href="#多行文本溢出" class="headerlink" title="多行文本溢出"></a>多行文本溢出</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 溢出隐藏 */</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="comment">/* 溢出省略号显示 */</span></span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"><span class="comment">/* 基于内核 */</span></span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line"><span class="comment">/* 设置对齐模式 */</span></span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line"><span class="comment">/* 行数 */</span></span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-<p>多行在除了 webkit 之外没找到很好的方便的省略号显示方法，可以选择直接隐藏好，然后在标签的 <code>title</code> 属性上绑定想要显示的文本。</p>
-
+    
+    <a class="article-more-a" style="display: none;" href="/2021/09/09/css-textoverflow-solutions/#more">
+      more >></a>
+    
     
 
     
@@ -388,11 +389,10 @@ var _hmt = _hmt || [];
     <blockquote>
 <p>链接 -&gt; <a target="_blank" rel="noopener" href="https://www.iconfont.cn/?spm=a313x.7781069.1998910419.d4d0a486a">iconfont官网</a></p>
 </blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不知道大家之前是怎么用的，是不是都是将图标下载下来，然后复制到项目文件中，引入使用，这种方法虽然可以实现效果，但是<strong>既不利于项目图标的管理，也不利于编码的统一</strong>。今天才知道原来还可以这么用？！步骤如下：   </p>
-<h3 id="1）选中的该项目的图标加入购物车"><a href="#1）选中的该项目的图标加入购物车" class="headerlink" title="1）选中的该项目的图标加入购物车"></a>1）选中的该项目的图标加入购物车</h3><p><img src="/2021/09/09/iconfot-instructions/1.png" alt="1"> </p>
-<h3 id="2）创建项目，将图标放到一个项目里面"><a href="#2）创建项目，将图标放到一个项目里面" class="headerlink" title="2）创建项目，将图标放到一个项目里面"></a>2）创建项目，将图标放到一个项目里面</h3><p><img src="/2021/09/09/iconfot-instructions/2.png" alt="2"> </p>
-<h3 id="3）生成-css-链接，引入-iconfont-图标文件，使用设置-class-即可。"><a href="#3）生成-css-链接，引入-iconfont-图标文件，使用设置-class-即可。" class="headerlink" title="3）生成 css 链接，引入 iconfont 图标文件，使用设置 class 即可。"></a>3）生成 css 链接，引入 iconfont 图标文件，使用设置 class 即可。</h3><p><img src="/2021/09/09/iconfot-instructions/3.png" alt="3"> </p>
-
+    
+    <a class="article-more-a" style="display: none;" href="/2021/09/09/iconfot-instructions/#more">
+      more >></a>
+    
     
 
     
@@ -608,7 +608,8 @@ var _hmt = _hmt || [];
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="方案种类"><a href="#方案种类" class="headerlink" title="方案种类"></a>方案种类</h2><h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><h3 id="百分比"><a href="#百分比" class="headerlink" title="百分比(%)"></a>百分比(%)</h3><h3 id="viewport-视口"><a href="#viewport-视口" class="headerlink" title="viewport(视口)"></a>viewport(视口)</h3>
+    <span id="more"></span>
+<h2 id="方案种类"><a href="#方案种类" class="headerlink" title="方案种类"></a>方案种类</h2><h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><h3 id="百分比"><a href="#百分比" class="headerlink" title="百分比(%)"></a>百分比(%)</h3><h3 id="viewport-视口"><a href="#viewport-视口" class="headerlink" title="viewport(视口)"></a>viewport(视口)</h3>
     
 
     
@@ -720,7 +721,8 @@ var _hmt = _hmt || [];
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><h2 id="float"><a href="#float" class="headerlink" title="float"></a>float</h2>
+    <span id="more"></span>
+<h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><h2 id><a href="#" class="headerlink" title></a></h2>
     
 
     
@@ -825,7 +827,8 @@ var _hmt = _hmt || [];
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="Flex-布局是什么？"><a href="#Flex-布局是什么？" class="headerlink" title="Flex 布局是什么？"></a>Flex 布局是什么？</h2><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><h2 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h2>
+    <span id="more"></span>
+<h2 id="Flex-布局是什么？"><a href="#Flex-布局是什么？" class="headerlink" title="Flex 布局是什么？"></a>Flex 布局是什么？</h2><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><h2 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h2>
     
 
     
@@ -1376,6 +1379,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面向对象 面向过程</a>
               </li>
              
@@ -1392,10 +1399,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">适配方案</a>
               </li>
              
@@ -1404,7 +1407,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
+                <a href="javascript:void(0)" class="js-tag color5">flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,14 +1427,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
@@ -1441,6 +1436,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
