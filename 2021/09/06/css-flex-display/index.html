@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://zx1001011.github.io">
   <title>Flex 布局知识详解 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Flex 布局是什么？基本概念容器的属性项目的属性">
+  <meta name="description" content="此文为个人理解文章笔记，详情请看 -&gt; 阮一峰的Flex 布局教程：语法篇  前言基于 display + position + float 的传统解决方案的不足，2009年，W3C 提出了一种新的方案–Flex 布局。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flex 布局知识详解">
 <meta property="og:url" content="https://zx1001011.github.io/2021/09/06/css-flex-display/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="Flex 布局是什么？基本概念容器的属性项目的属性">
+<meta property="og:description" content="此文为个人理解文章笔记，详情请看 -&gt; 阮一峰的Flex 布局教程：语法篇  前言基于 display + position + float 的传统解决方案的不足，2009年，W3C 提出了一种新的方案–Flex 布局。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-06T08:03:49.000Z">
-<meta property="article:modified_time" content="2021-09-09T08:31:13.799Z">
+<meta property="article:modified_time" content="2021-09-24T05:54:53.164Z">
 <meta property="article:author" content="jeneen">
 <meta property="article:tag" content="css">
 <meta property="article:tag" content="布局">
@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
                                             
                         </div>
                     </nav>
-                    <nav class="header-other"> <span class="post-count">文章|字数:13|9.4k</span>
+                    <nav class="header-other"> <span class="post-count">文章|字数:13|10.8k</span>
                     </nav>
         </header>
     </div>
@@ -273,8 +273,8 @@ var _hmt = _hmt || [];
                                 
                                     <div class="post-count">
                                         <i class="fa fa-book" aria-hidden="true"></i> 字数：
-                                        20字&nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-hourglass-start" aria-hidden="true"></i> 阅读时长：
-                                            1min&nbsp; | &nbsp;<i class="fa fa-user" aria-hidden="true"></i> 阅读量：
+                                        483字&nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-hourglass-start" aria-hidden="true"></i> 阅读时长：
+                                            2min&nbsp; | &nbsp;<i class="fa fa-user" aria-hidden="true"></i> 阅读量：
                                                 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次
                                     </div>
                                     
@@ -282,8 +282,17 @@ var _hmt = _hmt || [];
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <span id="more"></span>
-<h2 id="Flex-布局是什么？"><a href="#Flex-布局是什么？" class="headerlink" title="Flex 布局是什么？"></a>Flex 布局是什么？</h2><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><h2 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h2>
+                                        <blockquote>
+<p>此文为个人理解文章笔记，详情请看 -&gt; 阮一峰的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程：语法篇</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基于 <code>display</code> + <code>position</code> + <code>float</code> 的传统解决方案的不足，2009年，W3C 提出了一种新的方案–Flex 布局。 </p>
+<span id="more"></span>
+<h2 id="Flex-布局是什么？"><a href="#Flex-布局是什么？" class="headerlink" title="Flex 布局是什么？"></a>Flex 布局是什么？</h2><p>flex 是 flexible box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。<br>支持 ie10+，设置该布局之后 子元素的<code>float</code>、<code>clear</code>、<code>vertical-align</code>属性会失效。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>flex 布局包括 flex 容器 和 flex 项目。容器存在两种方向，水平和垂直。</p>
+<h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><p>6 个属性设置在容器上：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse; <span class="comment">/*控制排列方向*/</span></span><br><span class="line"><span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse; <span class="comment">/*项目是否排在一条线上 wrap 代表换行*/</span></span><br><span class="line"><span class="attribute">flex-flow</span>：&lt;<span class="attribute">flex-direction</span>&gt; || &lt;<span class="attribute">flex-wrap</span>&gt;; <span class="comment">/*前两个的简写，默认为 row nowrap*/</span></span><br><span class="line"><span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around; <span class="comment">/*对齐方式，左对齐、右对齐、居中、两端对齐、项目两侧间隔相等*/</span></span><br><span class="line"><span class="attribute">align-items</span>: flex-start | flex-end | center | baseline | stretch; <span class="comment">/*项目在副轴上的对齐方式*/</span></span><br><span class="line"><span class="attribute">align-content</span>：<span class="attribute">flex</span>-start | <span class="attribute">flex</span>-end | center | space-between | space-around | stretch; <span class="comment">/*多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">order</span>: &lt;integer&gt;; <span class="comment">/*项目的排列顺序。数值越小，排列越靠前，默认是0。*/</span></span><br><span class="line"><span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* 项目的放大比例，默认是0，即如果存在剩余空间，也不放大。 */</span></span><br><span class="line"><span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* 项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 */</span></span><br><span class="line"><span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* 在分配多余空间之前，项目占据的主轴空间（main size） */</span></span><br><span class="line"><span class="attribute">flex</span>: none | [ &lt;<span class="string">&#x27;flex-grow&#x27;</span>&gt; &lt;<span class="string">&#x27;flex-shrink&#x27;</span>&gt;? || &lt;<span class="string">&#x27;flex-basis&#x27;</span>&gt; ]; <span class="comment">/* 默认值 0 1 auto */</span></span><br><span class="line"><span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch; <span class="comment">/* 允许单个项目对齐方式自己设置，覆盖父元素的 align-items 属性 */</span></span><br></pre></td></tr></table></figure>
                                             
                                                 <!-- 《添加版权声明 -->
         
@@ -485,7 +494,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex-%E5%B8%83%E5%B1%80%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">Flex 布局是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">容器的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">项目的属性</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex-%E5%B8%83%E5%B1%80%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">Flex 布局是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">3.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">容器的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">5.</span> <span class="toc-text">项目的属性</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -619,6 +628,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面向对象 面向过程</a>
               </li>
              
@@ -627,11 +640,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color5">适配方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,14 +656,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">适配方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">响应式方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本溢出</a>
               </li>
              
@@ -659,15 +664,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">icon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+                <a href="javascript:void(0)" class="js-tag color1">hexo搭建个人博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,11 +676,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">icon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo搭建个人博客</a>
+                <a href="javascript:void(0)" class="js-tag color1">响应式方案</a>
               </li>
             
             <div class="clearfix"></div>
