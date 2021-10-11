@@ -1,0 +1,46 @@
+Vue.use(httpVueLoader);
+
+var Selectree = function () {}
+Selectree.prototype = {
+    /**
+     * 下拉树：是否是树、下拉数据、按钮名称、自己属性名称(每个节点的唯一标识)、[辨识父节点属性名称、根节点属性]
+     * @param el 例如：'#gatelist_page'
+     * @param para  例如：{ 'multi': Boolean, 'data': Array, 'name': String, 'keyName': String, 'parentName': String,  'rootId': String }
+     * @param callback  例如： function (item: obj){ //  }
+     */
+    render: function (element, para, callback) {
+        var obj = {
+            data: para.data,
+            name: para.name || ''
+        }
+        if (!para.multi) {
+            $(element).html('<selectree :multi="false" :data="data" :name="name" @change="change"></selectree>')
+        } else {
+            $(element).html('<selectree :multi="true" :data="data" :name="name" @change="change"' +
+            ' parent-name="parentName" key-name="keyName" root-id="rootId"></selectree>')
+            obj.parentName = para.parentName
+            obj.keyName = para.keyName
+            obj.rootId = para.rootId
+        }
+        new Vue({
+            el: element,
+            data: function () {
+                return obj
+            },
+            components: {
+                // 将组建加入组建库
+                'selectree': httpVueLoader('../components/selectTree.vue')  // js 调用的路径需要注意
+            },
+            methods: {
+                /**
+                 * 获取数据表数据
+                 * @param page 当前显示的页码数
+                 * @param limit 每页多少条数据
+                 */
+                change: function (item) {
+                    callback(item)
+                }
+            }
+        })
+    }
+}

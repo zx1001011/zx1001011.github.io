@@ -1,0 +1,40 @@
+Vue.use(httpVueLoader);
+
+var SelectFile = function () {}
+SelectFile.prototype = {
+    /**
+     * 渲染 selectFile
+     * @param element 渲染的 div 的 jquery 选择器表示
+     * @param para 其中参数都是可选的
+     * @param changeFile 获取文件数据的函数
+     */
+    render: function (element, para, changeFile) {
+        $(element).html('<selectfile :multi="multi" @change="changeFile"' +
+            ' :type="type" :name="name"></selectfile>')
+        new Vue({
+            el: element,
+            data: function () {
+                return {
+                    multi: para.multi || false, //
+                    type: para.type || 'text', //
+                    name: para.name || '', //
+                    format: para.format || '', //
+                }
+            },
+            components: {
+                // 将组建加入组建库
+                'selectfile': httpVueLoader('../components/selectFile.vue')  // js 调用的路径需要注意
+            },
+            methods: {
+                /**
+                 * 获取数据表数据
+                 * @param page 当前显示的页码数
+                 * @param limit 每页多少条数据
+                 */
+                changeFile: function (fileList) {
+                    changeFile(fileList)
+                }
+            }
+        })
+    }
+}

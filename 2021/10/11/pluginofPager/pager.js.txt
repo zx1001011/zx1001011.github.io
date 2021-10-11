@@ -1,0 +1,40 @@
+Vue.use(httpVueLoader);
+
+var Pager = function () {}
+Pager.prototype = {
+    /**
+     * 渲染 pager
+     * @param element 渲染的 div 的 jquery 选择器表示
+     * @param pagination 分页器的参数
+     * @param getTableData 获取表格数据的函数
+     */
+    render: function (element, pagination, getTableData) {
+        $(element).html('<pager v-cloak :total="total" :pagesize="pagesize" :currentpage="curpage"' +
+            ':maxdisplay="maxdisplay" @change-data="getTableData"></pager>')
+        new Vue({
+            el: element,
+            data: function () {
+                return {
+                    total: pagination.total, // 表格数据总数
+                    pagesize: pagination.pagesize, // 当前显示页码数
+                    curpage: pagination.curpage, // 每页的数量
+                    maxdisplay: pagination.maxdisplay // 最大显示页码数量
+                }
+            },
+            components: {
+                // 将组建加入组建库
+                'pager': httpVueLoader('../components/pager.vue')  // js 调用的路径需要注意
+            },
+            methods: {
+                /**
+                 * 获取数据表数据
+                 * @param page 当前显示的页码数
+                 * @param limit 每页多少条数据
+                 */
+                getTableData: function (page, limit) {
+                    getTableData(page, limit)
+                }
+            }
+        })
+    }
+}

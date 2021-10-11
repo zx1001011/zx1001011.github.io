@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/layui/css/layui.css">
+    <script src="../../door/assets/browser.min.js"></script>
+    <script src="../../door/assets/polyfill.min.js"></script>
+    <!-- 先引入 Vue -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入 http-vue-loader -->
+    <script src="https://unpkg.com/http-vue-loader"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="pager"></div>
+    </div>
+    <script type="text/javascript" src="../../assets/layui/layui.all.js"></script>
+    <script type="text/javascript"  src="../../assets/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript"  src="../../js/jquery/mustache.js"></script>
+    <script type="text/javascript" src="./pager.js"></script>
+    <script type="text/javascript">
+        var pager = new Pager()
+        pager.render('#pager', {
+            total: 100,
+            pagesize: 10,
+            curpage: 1,
+            maxdisplay: 6
+        }, function (page, limit) {
+            console.log('page: ' + page + ', limit: ' + limit)
+        })
+    </script>
+</body>
+
+</html>

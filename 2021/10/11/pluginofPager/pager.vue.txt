@@ -1,0 +1,219 @@
+<template>
+    <div id="pager" class="layui-box layui-laypage layui-laypage-default">
+        <div class="layui-col-md3">
+            <span class="layui-laypage-count"> {{total}} 条记录</span>
+            <span class="layui-laypage-count">共 {{ Math.ceil(total / limit)}} 页</span>
+        </div>
+        <div class="layui-col-md9">
+            <div class="right">
+                <span class="layui-laypage-limits">
+                    <select @change="changePagesize" v-model="limit">
+                        <option v-for="item, index in limits" :key="index" :value="item"
+                                :selected="item === limit ? true : false">{{item}} 条/页</option>
+                    </select>
+                </span>
+                <span class="layui-laypage-skip">
+                    到第<input class="layui-input" type="number" min="1" :max="Math.ceil(total / limit)" v-model="curpage"
+                             @keyup.enter="changeCurPage">页
+                    <button type="button" class="layui-laypage-btn" @click="changeCurPage">确定</button>
+                </span>
+                <a @click="changePage(index)" :class="item.status" v-for="item,index in pageNums" :key="index">{{item.name}}</a>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    module.exports = {
+        data: function () {
+            return {
+                pageNums: [],
+                limits: [],
+                curpage: 1,
+                limit: 0,
+                pagenum: 0,
+                oldpage: -1,
+                oldlimit: -1
+            }
+        },
+        props: {
+            total: Number,
+            pagesize: Number,
+            currentpage: Number,
+            maxdisplay: Number
+        },
+        methods: {
+            setPageNums: function () {
+                this.pageNums = [];
+                var arr = [];
+                // 根据 maxdisplay 、  curpage 、total 来组装页码
+                this.pagenum = Math.ceil(this.total / this.limit);
+                var displayNum = Math.min(this.pagenum, this.maxdisplay);
+                // 页码计算
+                /**
+                 * maxdisplay 表示 显示的页码的最大数量
+                 * 页码计算：显示 start = curpage - (displayNum - 1)/2
+                 *          end = start + displayNum - 1
+                 * 上一页是否可点击：curpage 是否 <= 1
+                 * 下一页是否可点击：curpage 是否 >= pagenum
+                 */
+                var start = this.curpage - parseInt((displayNum - 1) / 2);
+                start = start <= 0 ? 1 : start;
+                var end = start + displayNum - 1;
+                end = end > this.pagenum ? this.pagenum : end;
+                if (end === this.pagenum) {
+                    start = end - displayNum + 1
+                }
+                arr.push({
+                    num: 'prev',
+                    status: this.curpage === 1 ? 'layui-laypage-prev layui-disabled disabled page-item' : 'page-item',
+                    name: '上一页'
+                });
+                if (start - 1 > 0) {
+                    arr.push({
+                        num: -1,
+                        status: 'layui-laypage-spr layui-disabled disabled',
+                        name: '...'
+                    })
+                }
+                for (var i = start; i <= end; i++) {
+                    arr.push({
+                        num: i,
+                        status: i == this.curpage ? 'layui-laypage-curr active page-item' : 'page-item',
+                        name: i
+                    })
+                }
+                if (end + 1 <= this.pagenum) {
+                    arr.push({
+                        num: -1,
+                        status: 'layui-laypage-spr layui-disabled disabled',
+                        name: '...'
+                    })
+                }
+                arr.push({
+                    num: 'next',
+                    status: this.curpage === this.pagenum ? 'layui-laypage-next layui-disabled disabled page-item' : 'page-item',
+                    name: '下一页'
+                });
+                this.pageNums = arr
+                this.changeData()
+            },
+            setLimits: function () {
+                this.limits = []
+                var arr = []
+                for (var i = 1; i <= 10; i++) {
+                    arr.push(i * this.pagesize)
+                }
+                this.limits = arr
+            },
+            changePagesize: function () {
+                this.curpage = this.currentpage;
+                this.setPageNums()
+            },
+            changeCurPage: function () {
+                this.checkPage();
+                this.setPageNums()
+            },
+            changePage: function (index) {
+                if (this.pageNums[index].status.indexOf('disabled') === -1) {
+                    if (this.pageNums[index].num === 'prev') {
+                        for (var i = 0; i < this.pageNums.length; i++) {
+                            if (this.pageNums[i].status.indexOf('active') !== -1) {
+                                this.curpage = this.pageNums[i].num - 1;
+                                break
+                            }
+                        }
+                    } else if (this.pageNums[index].num === 'next') {
+                        for (var i = 0; i < this.pageNums.length; i++) {
+                            if (this.pageNums[i].status.indexOf('active') !== -1) {
+                                this.curpage = this.pageNums[i].num + 1;
+                                break
+                            }
+                        }
+                    } else {
+                        this.curpage = this.pageNums[index].num
+                    }
+                    this.checkPage();
+                    this.setPageNums()
+                }
+            },
+            checkPage: function () {
+                if (this.curpage > this.pagenum) {
+                    this.curpage = this.pagenum
+                } else if (this.curpage <= 0) {
+                    this.curpage = 1
+                } else {
+                    this.curpage = parseInt(Number(this.curpage))
+                }
+            },
+            changeData: function () {
+                if (this.oldpage !== this.curpage || this.oldlimit !== this.limit) {
+                    this.oldlimit = this.limit;
+                    this.oldpage = this.curpage;
+                    this.$emit('change-data', this.curpage, this.limit)
+                }
+            }
+        },
+        mounted: function () {
+            // 初始化
+            this.curpage = this.currentpage || 1;
+            this.oldpage = this.currentpage || 1;
+            this.limit = this.pagesize || 10;
+            this.oldlimit = this.pagesize || 10;
+            this.setPageNums();
+            this.setLimits()
+            // this.changeData()
+        },
+        // watch: {
+        // curpage: function (newV, oldV) {
+        //     if (oldV !== newV) {
+        //         this.$emit('change-data', newV, this.limit)
+        //     }
+        // },
+        // limit: function (newV, oldV) {
+        //     if (newV !== oldV) {
+        //         this.$emit('change-data', this.curpage, newV)
+        //     }
+        // },
+        // total: function (newV, oldV) {
+        //     if (newV !== oldV) {
+        //         this.setPageNums()
+        //     }
+        // }
+        // }
+    }
+</script>
+<style>
+    /* global start */
+    .right {
+        float: right;
+    }
+
+    .left {
+        float: left;
+    }
+
+    /* global end */
+
+    #pager {
+        width: 100%;
+    }
+
+    .layui-laypage-skip input[type=number]::-webkit-outer-spin-button,
+    .layui-laypage-skip input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    .layui-laypage-skip input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    #pager .page-item.active {
+        background-color: #009688;
+        color: #fff;
+    }
+
+    #pager .page-item.disabled {
+        cursor: not-allowed !important;
+        color: #d2d2d2 !important;
+    }
+</style>
