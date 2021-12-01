@@ -170,7 +170,7 @@ var _hmt = _hmt || [];
                                             
                         </div>
                     </nav>
-                    <nav class="header-other"> <span class="post-count">文章|字数:18|22.1k</span>
+                    <nav class="header-other"> <span class="post-count">文章|字数:19|22.5k</span>
                     </nav>
         </header>
     </div>
@@ -252,6 +252,115 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
     
+        <article id="post-vue-v-model-sync-diff" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class=" article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/01/vue-v-model-sync-diff/">Vue 中 v-model 与 sync 的异同</a>
+    </h1>
+  
+
+                    
+                        <a href="/2021/12/01/vue-v-model-sync-diff/" class="archive-article-date">
+  	<time datetime="2021-12-01T06:41:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-01</time>
+</a>
+                            
+                                
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <h2 id="v-model-使用与本质"><a href="#v-model-使用与本质" class="headerlink" title="v-model 使用与本质"></a>v-model 使用与本质</h2><p>官方查看： <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6">-&gt;</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子组件</span></span><br><span class="line"><span class="attr">model</span>: &#123;</span><br><span class="line">    <span class="attr">prop</span>: <span class="string">&#x27;checked&#x27;</span>,</span><br><span class="line">    <span class="attr">event</span>: <span class="string">&#x27;change&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 父组件</span></span><br><span class="line"><span class="comment">// 默认是  model: &#123; prop: &#x27;value&#x27;, event: &#x27;input&#x27;&#125;</span></span><br><span class="line">&lt;Child :checked=<span class="string">&quot;model&quot;</span> @change=<span class="string">&quot;model = $event&quot;</span>&gt;&lt;/Child&gt;</span><br><span class="line"><span class="comment">// 也可写成</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">Child</span> <span class="attr">v-model</span>=<span class="string">&quot;model&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Child</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>v-model 是一种语法糖，主要用来与用户交互的输入框中进行数据双向绑定，model 的监控属性和行为可以自定义。</p>
+                            
+                                <a class="article-more-a" style="display: none;" href="/2021/12/01/vue-v-model-sync-diff/#more">
+                                    more >></a>
+                                
+                                    
+                                                <!-- 《添加版权声明 -->
+        
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+                                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+<div class="article-tag tagcloud">
+  <i class="icon-price-tags icon"></i>
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item">
+      <a href="/tags/vue/"
+        class="js-tag article-tag-list-link color4">
+        vue
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+
+                        
+<div class="article-category tagcloud">
+  <i class="icon-book icon"></i>
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item">
+      <a href="/categories/vue/" class="article-tag-list-link color4">
+        vue
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2021/12/01/vue-v-model-sync-diff/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+            <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+                
+            
         <article id="post-algorithm-sort1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1302,126 +1411,6 @@ var _hmt = _hmt || [];
 
                 
             
-        <article id="post-css-display" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class=" article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/06/css-display/">网页布局详解</a>
-    </h1>
-  
-
-                    
-                        <a href="/2021/09/06/css-display/" class="archive-article-date">
-  	<time datetime="2021-09-06T08:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-06</time>
-</a>
-                            
-                                
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>CSS 中 display 可配置的值可见 -&gt; <a target="_blank" rel="noopener" href="https://www.w3school.com.cn/cssref/pr_class_display.asp">w3school</a>。<br>这里主要介绍一下常见的几种布局设置。</p>
-                            
-                                <a class="article-more-a" style="display: none;" href="/2021/09/06/css-display/#more">
-                                    more >></a>
-                                
-                                    
-                                                <!-- 《添加版权声明 -->
-        
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-                                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-<div class="article-tag tagcloud">
-  <i class="icon-price-tags icon"></i>
-  <ul class="article-tag-list">
-    
-    <li class="article-tag-list-item">
-      <a href="/tags/css/"
-        class="js-tag article-tag-list-link color4">
-        css
-      </a>
-    </li>
-    
-    <li class="article-tag-list-item">
-      <a href="/tags/布局/"
-        class="js-tag article-tag-list-link color3">
-        布局
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-
-                        
-<div class="article-category tagcloud">
-  <i class="icon-book icon"></i>
-  <ul class="article-tag-list">
-    
-    <li class="article-tag-list-item">
-      <a href="/categories/css/" class="article-tag-list-link color4">
-        css
-      </a>
-    </li>
-    
-    <li class="article-tag-list-item">
-      <a href="/categories/css/布局/" class="article-tag-list-link color3">
-        布局
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2021/09/06/css-display/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-            <aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-                
-            
                 
                     <nav id="page-nav">
                         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next »</a>
@@ -1521,23 +1510,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向过程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,6 +1575,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hexo搭建个人博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向过程</a>
               </li>
             
             <div class="clearfix"></div>
