@@ -175,7 +175,7 @@ var _hmt = _hmt || [];
                                             
                         </div>
                     </nav>
-                    <nav class="header-other"> <span class="post-count">文章|字数:22|25k</span>
+                    <nav class="header-other"> <span class="post-count">文章|字数:23|25.3k</span>
                     </nav>
         </header>
     </div>
@@ -259,6 +259,128 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
     
+        <article id="post-vue-element-template-use" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class=" article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/31/vue-element-template-use/">修改 主题颜色 【vue-elementui-admin 框架】</a>
+    </h1>
+  
+
+                    
+                        <a href="/2022/03/31/vue-element-template-use/" class="archive-article-date">
+  	<time datetime="2022-03-31T08:55:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-31</time>
+</a>
+                            
+                                
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><h5 id="框架库：https-github-com-PanJiaChen-vue-admin-template-tree-permission-control"><a href="#框架库：https-github-com-PanJiaChen-vue-admin-template-tree-permission-control" class="headerlink" title="框架库：https://github.com/PanJiaChen/vue-admin-template/tree/permission-control"></a>框架库：<a target="_blank" rel="noopener" href="https://github.com/PanJiaChen/vue-admin-template/tree/permission-control">https://github.com/PanJiaChen/vue-admin-template/tree/permission-control</a></h5><blockquote>
+<p>由于最近项目需求，接触了 这个 vue admin 管理后台的前端框架，其中不乏一些具有挑战[对我来说，没有碰过]，比如动态路由配置、iframe 切换和保持、tagsView 的引入，不过在不断的努力之后，只要好好理理逻辑，上手还是很快的，其中最麻烦的是 动态路由配置，需要根据后端数据编码生成 path 来设定 路由， 当然回归本节，比较简单。</p>
+</blockquote>
+<h2 id="步骤如下"><a href="#步骤如下" class="headerlink" title="步骤如下"></a>步骤如下</h2><ul>
+<li><p>安装 element-theme, element-theme-chalk <strong>(可以先进行下一步，如果不行再安装)</strong><br>  <code>npm i element-theme -g</code><br>  <code>npm i element-theme-chalk -g</code> </p>
+<p>  <em>但是后来，发现，在 main.js 中早就有 相关的引入，也不需要安装，可以先不安装进行下步试试</em></p>
+</li>
+<li><p>在 <code>@/styles</code> 路径下面 新建文件 <code>element-variables.scss</code>, 配置如下：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 改变主题色变量 */</span></span><br><span class="line"><span class="variable">$--color-primary</span>: <span class="number">#009688</span>;</span><br><span class="line"><span class="comment">/* 改变 icon 字体路径变量，必需 */</span></span><br><span class="line"><span class="variable">$--font-path</span>: <span class="string">&#x27;~element-ui/lib/theme-chalk/fonts&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;~element-ui/packages/theme-chalk/src/index&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>在 main.js 中引入即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;@/styles/element-variables.scss&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+                                            
+                                                <!-- 《添加版权声明 -->
+        
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+                                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+<div class="article-tag tagcloud">
+  <i class="icon-price-tags icon"></i>
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item">
+      <a href="/tags/前端/"
+        class="js-tag article-tag-list-link color3">
+        前端
+      </a>
+    </li>
+    
+    <li class="article-tag-list-item">
+      <a href="/tags/后台系统框架/"
+        class="js-tag article-tag-list-link color2">
+        后台系统框架
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+
+                        
+<div class="article-category tagcloud">
+  <i class="icon-book icon"></i>
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item">
+      <a href="/categories/前端/" class="article-tag-list-link color3">
+        前端
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2022/03/31/vue-element-template-use/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+            <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+                
+            
         <article id="post-arscgisjs-use" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1282,126 +1404,6 @@ var _hmt = _hmt || [];
 
                 
             
-        <article id="post-css-textoverflow-solutions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class=" article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/09/css-textoverflow-solutions/">css 文本溢出省略号处理方法</a>
-    </h1>
-  
-
-                    
-                        <a href="/2021/09/09/css-textoverflow-solutions/" class="archive-article-date">
-  	<time datetime="2021-09-09T02:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-09</time>
-</a>
-                            
-                                
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h3 id="单行文本溢出"><a href="#单行文本溢出" class="headerlink" title="单行文本溢出"></a>单行文本溢出</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 块级元素才能用 overflow */</span></span><br><span class="line"><span class="attribute">display</span>: block; </span><br><span class="line"><span class="comment">/* 不换行 */</span></span><br><span class="line"><span class="attribute">white-space</span>: nowrap; </span><br><span class="line"><span class="comment">/* 溢出隐藏 */</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="comment">/* 溢出省略号显示 */</span></span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure>
-                            
-                                <a class="article-more-a" style="display: none;" href="/2021/09/09/css-textoverflow-solutions/#more">
-                                    more >></a>
-                                
-                                    
-                                                <!-- 《添加版权声明 -->
-        
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-                                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-<div class="article-tag tagcloud">
-  <i class="icon-price-tags icon"></i>
-  <ul class="article-tag-list">
-    
-    <li class="article-tag-list-item">
-      <a href="/tags/css/"
-        class="js-tag article-tag-list-link color4">
-        css
-      </a>
-    </li>
-    
-    <li class="article-tag-list-item">
-      <a href="/tags/文本溢出/"
-        class="js-tag article-tag-list-link color5">
-        文本溢出
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-
-                        
-<div class="article-category tagcloud">
-  <i class="icon-book icon"></i>
-  <ul class="article-tag-list">
-    
-    <li class="article-tag-list-item">
-      <a href="/categories/css/" class="article-tag-list-link color4">
-        css
-      </a>
-    </li>
-    
-    <li class="article-tag-list-item">
-      <a href="/categories/css/文本溢出/" class="article-tag-list-link color5">
-        文本溢出
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2021/09/09/css-textoverflow-solutions/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-            <aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-                
-            
                 
                     <nav id="page-nav">
                         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next »</a>
@@ -1501,11 +1503,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向过程</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Three.js  web3D</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ArcGIS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1541,11 +1567,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1565,43 +1603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">后台系统框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hexo搭建个人博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向过程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ArcGIS</a>
               </li>
             
             <div class="clearfix"></div>
