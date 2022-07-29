@@ -58,7 +58,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -175,7 +175,7 @@ var _hmt = _hmt || [];
                                             
                         </div>
                     </nav>
-                    <nav class="header-other"> <span class="post-count">文章|字数:30|37.9k</span>
+                    <nav class="header-other"> <span class="post-count">文章|字数:31|38.2k</span>
                     </nav>
         </header>
     </div>
@@ -259,6 +259,128 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
     
+        <article id="post-jquery-source" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class=" article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/23/jquery-source/">jQuery 源码阅读 - 框架</a>
+    </h1>
+  
+
+                    
+                        <a href="/2022/02/23/jquery-source/" class="archive-article-date">
+  	<time datetime="2022-02-23T02:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-23</time>
+</a>
+                            
+                                
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <blockquote>
+<h3 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h3><p>repository: <a target="_blank" rel="noopener" href="https://github.com/jquery/jquery/">https://github.com/jquery/jquery/</a><br>npm: <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/jquery">https://www.npmjs.com/package/jquery</a><br>home: <a target="_blank" rel="noopener" href="https://jquery.com/">https://jquery.com/</a><br>video: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1b4411L7eX?p=2&spm_id_from=pageDriver">https://www.bilibili.com/video/BV1b4411L7eX?p=2&amp;spm_id_from=pageDriver</a></p>
+</blockquote>
+                            
+                                <a class="article-more-a" style="display: none;" href="/2022/02/23/jquery-source/#more">
+                                    more >></a>
+                                
+                                    
+                                                <!-- 《添加版权声明 -->
+        
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+                                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+<div class="article-tag tagcloud">
+  <i class="icon-price-tags icon"></i>
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item">
+      <a href="/tags/源码/"
+        class="js-tag article-tag-list-link color3">
+        源码
+      </a>
+    </li>
+    
+    <li class="article-tag-list-item">
+      <a href="/tags/jQuery/"
+        class="js-tag article-tag-list-link color2">
+        jQuery
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+
+                        
+<div class="article-category tagcloud">
+  <i class="icon-book icon"></i>
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item">
+      <a href="/categories/前端/" class="article-tag-list-link color3">
+        前端
+      </a>
+    </li>
+    
+    <li class="article-tag-list-item">
+      <a href="/categories/前端/js/" class="article-tag-list-link color3">
+        js
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2022/02/23/jquery-source/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+            <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+                
+            
         <article id="post-nginx-use" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1288,131 +1410,9 @@ var _hmt = _hmt || [];
 
                 
             
-        <article id="post-js-array-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class=" article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/07/js-array-function/">JavaScript 数组常用方法</a>
-    </h1>
-  
-
-                    
-                        <a href="/2021/09/07/js-array-function/" class="archive-article-date">
-  	<time datetime="2021-09-07T01:08:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-07</time>
-</a>
-                            
-                                
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <blockquote>
-<p>资料链接：<br>w3c-js-array: <a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jsref/jsref_obj_array.asp">https://www.w3school.com.cn/jsref/jsref_obj_array.asp</a><br>es6: <a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/array">https://es6.ruanyifeng.com/#docs/array</a><br>其他: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/zyfeng/p/10541133.html">https://www.cnblogs.com/zyfeng/p/10541133.html</a>   </p>
-</blockquote>
-                            
-                                <a class="article-more-a" style="display: none;" href="/2021/09/07/js-array-function/#more">
-                                    more >></a>
-                                
-                                    
-                                                <!-- 《添加版权声明 -->
-        
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-                                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-<div class="article-tag tagcloud">
-  <i class="icon-price-tags icon"></i>
-  <ul class="article-tag-list">
-    
-    <li class="article-tag-list-item">
-      <a href="/tags/js/"
-        class="js-tag article-tag-list-link color3">
-        js
-      </a>
-    </li>
-    
-    <li class="article-tag-list-item">
-      <a href="/tags/数组/"
-        class="js-tag article-tag-list-link color3">
-        数组
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-
-                        
-<div class="article-category tagcloud">
-  <i class="icon-book icon"></i>
-  <ul class="article-tag-list">
-    
-    <li class="article-tag-list-item">
-      <a href="/categories/js/" class="article-tag-list-link color3">
-        js
-      </a>
-    </li>
-    
-    <li class="article-tag-list-item">
-      <a href="/categories/js/数组/" class="article-tag-list-link color3">
-        数组
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2021/09/07/js-array-function/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-            <aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-                
-            
                 
                     <nav id="page-nav">
-                        <a class="extend prev" rel="prev" href="/">« Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next »</a>
+                        <a class="extend prev" rel="prev" href="/">« Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next »</a>
                     </nav>
                     
                         
@@ -1646,6 +1646,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">grid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
             
             <div class="clearfix"></div>
