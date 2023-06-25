@@ -1,0 +1,170 @@
+
+var SelectFile = function () {};
+SelectFile.prototype = {
+    /**
+     * 渲染 selectFile
+     * @param el 渲染的 div 的 jquery 选择器表示
+     * @param para 其中参数都是可选的
+     * @param changeFile 获取文件数据的函数
+     */
+    render: function (el, para, changeFile) {
+        // 初始化参数
+        var name = para.name || '选择文件';
+        var multi = para.multi || false;
+        var type = para.type || 'text'; // 两种 'picture' | 'text'
+        var format = para.format || '';
+        var fileList = para.files || [];
+        var files = [];
+        var _this = this;
+
+        // 渲染 html
+        var temp = '<div class="selectFile"><button type="button" class="btn btn-default btn-input">{{name}}</button><input type="file" '+
+            'accept="{{format}}" class="btn btn-default input" {{getMulti}}>'+
+            '<div class="{{getListClass}} list" style="{{getListStyle}}">'+
+            '{{#fileList}}{{{getItemContent}}}{{/fileList}}'+
+            '</div>'+
+            '</div>';
+
+        var view = Mustache.render(temp, {
+            name: name,
+            multi: multi,
+            type: type,
+            format: format,
+            fileList: fileList,
+            getMulti: function () {
+                if (this.multi) {
+                    return 'multiple'
+                }
+                return ''
+            },
+            getListClass: function () {
+                if (this.type === 'picture') return 'pic-list';
+                return 'file-list'
+            },
+            getListStyle: function () {
+                var style = '';
+                if (!this.multi) {
+                    if (this.type === 'picture') {
+                        style += 'width: 122px;'
+                    } else {
+                        style += 'display: inline-block; width: 200px; margin-top: 0;'
+                    }
+                }
+                if (this.fileList.length === 0 && this.type === 'picture') style += 'display: none;';
+                return style
+            },
+            getItemContent: function () {
+                return getItemC(this)
+            }
+        });
+        function getItemC(item) {
+            var temp = '<li class="item">';
+            if (type === 'picture') {
+                temp += '<img src="' + item.src + '" alt="' + item.name + '" title="' + item.name + '" class="img" >'
+            } else {
+                temp += '<i class="fa fa-file-text-o icon"></i><span class="name" title="' + item.name + '">' + item.name + '</span>'
+            }
+            temp += '<i class="delete fa fa-times" style="display: none;"></i></li>';
+            return temp
+        }
+        $(el).html(view);
+
+        // 绑定 hover 删除按钮的显示与隐藏事件
+        hoverIcon();
+        function hoverIcon() {
+            $(el + ' .list .item').unbind();
+            $(el + ' .list .item').hover(function () {
+                $(this).children('.delete').show();
+                deleteIcon();
+            }, function () {
+                $(this).children('.delete').hide()
+            });
+        }
+
+        // 绑定文件添加事件
+        $(el + ' .selectFile .input').unbind();
+        $(el + ' .selectFile .input').bind('change', function (e) {
+            var myfiles = e.target.files;
+            var len = myfiles.length;
+            if (len > 0) {
+                if (!multi) {
+                    files = []
+                }
+                if (type === 'picture') {
+                    for (var i = 0; i < len; i++) {
+                        getFileSrc(myfiles[i], addFiles)
+                    }
+                } else {
+                    for (var i = 0; i < len; i++) {
+                        addFiles(myfiles[i])
+                    }
+                }
+
+                function addFiles(data) {
+                    files.push(data);   // 直接赋值没法更新显示的图片
+
+                    if (myfiles[len-1] === data) {
+                        // 本轮最后的图片添加之后，触发 change 事件 => 通知父组件进行操作
+                        // 更新 dom
+                        var views = '';
+                        if (multi) {
+                            for (var i = 0; i < len; i++) {
+                                views += getItemC(myfiles[i])
+                            }
+                        } else {
+                            views += getItemC(myfiles[0])
+                        }
+                        $(el + ' .selectFile .list').show();
+                        if (files.length === 1) {
+                            $(el + ' .selectFile .list').html(views);
+                        } else {
+                            $(el + ' .selectFile .list').html($(el + ' .selectFile .list').html() + views);
+                        }
+                        hoverIcon();
+                        changeFile(files)
+                    }
+                }
+            }
+            // 用于图片回显, 有时候会出错， 图片显示不出来
+            function getFileSrc(file, callback) {
+                if (!window.FileReader) return 'fail';
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                // 回调
+                reader.onloadend = function () {
+                    file.src = this.result;
+                    callback(file)
+                };
+                reader.onerror = function () {
+                    console.error('图片' + file.name + '显示出错！')
+                };
+                return 'success'
+            }
+        });
+
+        // 绑定文件删除事件
+        function deleteIcon() {
+            $(el + ' .selectFile .item .delete').unbind();
+            $(el + ' .selectFile .item .delete').bind('click', function () {
+                // 删除文件和传递的文件数组中的文件变量
+                var indexFile = -1;
+                var listItem = $(this).parent();
+                $(el + ' .selectFile .item').each(function (index, item) {
+                    if (listItem[0] === item) {
+                        indexFile = index;
+                        return false
+                    }
+                });
+                if (indexFile !== -1) {
+                    files.splice(indexFile, 1);
+                }
+                listItem.remove();
+                if (files.length === 0 && type === 'picture'){
+                    $(el + ' .selectFile .list').hide()
+                }
+                changeFile(files)
+            });
+        }
+
+    }
+};

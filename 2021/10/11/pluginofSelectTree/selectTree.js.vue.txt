@@ -1,0 +1,236 @@
+<template>
+    <div class="select-tree input-group input-group-sm col-lg-3 col-sm-3 col-xs-3">
+        <span class="input-group-btn" v-if="name.length > 0">
+            <span class="btn choose-gate-Adapter disabled opacity-1">{{name}}</span>
+        </span>
+        <div v-clickoutside="handleClose" class="form-control select-list">
+            <div class="input" @click="display = true">{{selectItem.name}}<span class="fa fa-caret-down"></span></div>
+            <list v-if="multi & display" :list="treeData" @click="handleClick" class="selectree"></list>
+            <ul v-if="!multi & display" class="selectree list">
+                <li class="list-item" v-for="(item, index) in data" :key="index" @click="handleClick(item)">{{item.name}}</li>
+            </ul>
+        </div>
+    </div>
+</template>
+
+<script>
+    // Vue.component('list', {
+    //     template: '<div class="list"><div class="list-item" v-if="list.length" v-for="(item, index) in list" :key="index">' +
+    //         '<span class="item-name" @click="handleClick(item)">{{item.name}}</span>' +
+    //         '<div class="list-children">'+
+    //         '<list :list="item.children" @click="click"></list>' +
+    //         '</div>' +
+    //         '</div></div>',
+    //     props: {
+    //         list: Array
+    //     },
+    //     mounted: function () {
+    //         console.log('Child mount ')
+    //     },
+    //     methods: {
+    //         handleClick: function (item) {
+    //             this.$emit('click', item)
+    //         },
+    //         click: function (item) {
+    //             this.$emit('click', item)
+    //         }
+    //     }
+    // });
+    var clickoutside = {
+        // 初始化指令
+        bind: function(el, binding, vnode) {
+            function documentHandler(e) {
+                // 这里判断点击的元素是否是本身，是本身，则返回
+                if (el.contains(e.target)) {
+                    return false;
+                }
+                // 判断指令中是否绑定了函数
+                if (binding.expression) {
+                    // 如果绑定了函数 则调用那个函数，此处binding.value就是handleClose方法
+                    binding.value(e);
+                }
+            }
+            // 给当前元素绑定个私有变量，方便在unbind中可以解除事件监听
+            el.__vueClickOutside__ = documentHandler;
+            document.addEventListener('click', documentHandler);
+        },
+        update: function() {},
+        unbind: function(el, binding) {
+            // 解除事件监听
+            document.removeEventListener('click', el.__vueClickOutside__);
+            delete el.__vueClickOutside__;
+        },
+    };
+    module.exports = {
+        data: function () {
+            return {
+                selectItem: {
+                    name: ''
+                },
+                selectIndex: -1,
+                treeData: [],
+                display: false
+            }
+        },
+        props: {
+            multi: Boolean,
+            /**
+             * [{
+             *   name: '',
+             *   value: ''
+             * }]
+             */
+            data: Array,
+            name: String,
+            parentName: String,
+            keyName: String,
+            rootId: String
+        },
+        directives: { 'clickoutside': clickoutside },
+        components: {
+            'list': {
+                name: 'list',
+                template: '<div class="list"><div class="list-item" v-for="(item, index) in list" :key="index">' +
+                    '<span :class="classObj" @click="changeShow" v-if="item.children.length"></span>' +
+                    '<span class="item-name" @click="handleClick(item)"><span :class="item.children.length > 0 ? classObj1 : classObj2"></span>{{item.name}}</span>' +
+                    '<div class="list-children" v-if="item.children.length & show">'+
+                    '<list :list="item.children" @click="click"></list>' +
+                    '</div>' +
+                    '</div></div>',
+                props: {
+                    list: Array
+                },
+                data: function () {
+                    return {
+                        show: false,
+                        classObj: {
+                            'fa': true,
+                            'fa-angle-right': true,
+                            'fa-angle-down': false
+                        },
+                        classObj1: {
+                            'fa': true,
+                            'fa-folder-o': true,
+                            'fa-folder-open-o': false
+                        },
+                        classObj2: {
+                            'fa': true,
+                            'fa-file': true
+                        }
+                    }
+                },
+                mounted: function () { },
+                methods: {
+                    handleClick: function (item) {
+                        this.$emit('click', item)
+                    },
+                    click: function (item) {
+                        this.$emit('click', item)
+                    },
+                    changeShow: function () {
+                        this.show = !this.show;
+                        if (this.show) {
+                            this.classObj['fa-angle-right'] = false;
+                            this.classObj['fa-angle-down'] = true;
+                            this.classObj1['fa-folder-o'] = false;
+                            this.classObj1['fa-folder-open-o'] = true
+                        } else {
+                            this.classObj['fa-angle-right'] = true;
+                            this.classObj['fa-angle-down'] = false;
+                            this.classObj1['fa-folder-open-o'] = false;
+                            this.classObj1['fa-folder-o'] = true
+                        }
+                    }
+                }
+            }
+        },
+        methods: {
+            handleClick: function (item) {
+                this.selectItem = item
+                this.$emit('change', this.selectItem)
+            },
+            handleClose: function (e) {
+                this.display = false;
+            }
+        },
+        mounted: function () {
+            if (this.multi) {
+                var pKey = this.parentName
+                var key = this.keyName
+                // 需要将 array 的数据转化成 children-parent 的格式
+                var traverse = function (id, list) {
+                    var arr = [];
+                    for (var i = 0; i < list.length; i++) {
+                        if (String(list[i][pKey]) === id) {
+                            list[i].children = traverse(String(list[i][key]), list);
+                            arr.push(list[i])
+                        }
+                    }
+                    return arr
+                };
+                this.treeData = traverse(this.rootId, this.data);
+            }
+        }
+    }
+</script>
+
+<style>
+    .select-tree {
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+    .select-tree > .form-control {
+        width: 300px;
+    }
+
+    .select-tree .btn.opacity-1 {
+        opacity: 1;
+    }
+
+    .select-tree .select-list {
+        position: relative;
+        z-index: unset;
+    }
+
+    .select-tree .select-list > .input {
+        border-width: 0;
+        height: calc(100% + 10px);
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        margin-top: -5px;
+        padding: 5px 10px;
+    }
+
+    .select-tree .select-list > .input > .fa {
+        float: right;
+        margin-top: 2px;
+        font-size: 14px;
+    }
+
+    .select-tree .select-list > .selectree {
+        position: absolute;
+        top: 28px;
+        left: 10px;
+        z-index: 666666666;
+        width: calc(100% + 2px);
+        margin-left: -11px;
+        padding: 10px 15px;
+        border: 1px solid #d5d5d5;
+        background-color: #fff;
+    }
+
+    .select-tree .list .list-item .fa {
+        margin-right: 5px;
+        font-size: 16px;
+    }
+
+    .select-tree .list .list-item .item-name {
+        display: inline-block;
+        margin: 5px 0;
+    }
+
+    .select-tree .list .list-item .list-children {
+        margin-left: 16px;
+    }
+</style>

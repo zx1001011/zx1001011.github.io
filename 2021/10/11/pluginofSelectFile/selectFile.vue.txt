@@ -1,0 +1,211 @@
+<template>
+    <div class="selectFile">
+        <!--
+        1、 按钮点击选择文件，传到内存中，
+        然后点击上传（该上传按钮不在本组件中，由用户操控） 传到服务器
+        2、 有三种显示方式：
+            a. 直接显示一个文件名称
+            b. 多文件列表形式展示文件
+            c. 图片上传可以预览图片
+        -->
+        <button class="btn btn-default btn-input" type="button">{{name}}</button>
+        <input type="file" class="btn btn-default input" :accept="format" ref="inputFile"
+               @change="changeFile($event)" :multiple="multi">
+        <div v-if="type !== 'picture'" class="file-list" :style="multi ? '' : 'display: inline-block; width: 200px; margin-top: 0;'">
+            <li v-for="(item, index) in files" :key="index" class="item"
+                @mouseover="active = index" @mouseout="active = -1">
+                <i class="fa fa-file-text-o icon"></i><span class="name" :title="item.name">{{item.name}}</span>
+                <i class="delete fa fa-times" @click="deleteFile(index)" v-show="index === active"
+                   @mouseover="active = index" @mouseout="active = -1"></i>
+            </li>
+        </div>
+        <div v-else v-show="files.length" class="pic-list" :style="multi ? '' : 'width: 122px;'">
+            <li class="item" v-for="(item, index) in files" :key="index">
+                <img :src="item.src" :alt="item.name" :title="item.name" class="img"
+                     @mouseover="active = index" @mouseout="active = -1">
+                <i class="delete fa fa-times" @click="deleteFile(index)" v-show="index === active"
+                   @mouseover="active = index" @mouseout="active = -1"></i>
+            </li>
+        </div>
+    </div>
+</template>
+
+<script>
+    module.exports = {
+        name: "selectFile",
+        data: function () {
+            return {
+                files: [],
+                active: -1
+            }
+        },
+        props: {
+            name: {
+                type: String,
+                default: function () {
+                    return '选择文件'
+                }
+            },
+            multi: Boolean,
+            type: {
+                type: String,
+                default: function () {
+                    return 'text'
+                }
+            }, // 'picture' | 'text'
+            // todo 初始化回显文件列表
+            // fileList: Array,
+            format: {
+                type: String,
+                default: function () {
+                    return ''
+                }
+            }
+        },
+        methods: {
+            changeFile: function (e) {
+                var _self = this;
+                var len = e.target.files.length;
+                if (len > 0) {
+                    if (!this.multi) {
+                        _self.files = []
+                    }
+                    if (this.type === 'picture') {
+                        for (var i = 0; i < len; i++) {
+                            getFileSrc(e.target.files[i], addFiles)
+                        }
+                    } else {
+                        for (var i = 0; i < len; i++) {
+                            addFiles(e.target.files[i])
+                        }
+                    }
+
+                    function addFiles(data) {
+                        _self.files.push(data);   // 直接赋值没法更新显示的图片
+                        if (e.target.files[len-1] === data) {
+                            // 本轮最后的图片添加之后，触发 change 事件 => 通知父组件进行操作
+                            _self.$emit('change', _self.files)
+                        }
+                    }
+                }
+                // 用于图片回显
+                function getFileSrc(file, callback) {
+                    if (!window.FileReader) return 'fail';
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    // 回调
+                    reader.onload = function () {
+                        file.src = this.result;
+                        callback(file)
+                    };
+                    return 'success'
+                }
+            },
+            deleteFile: function (index) {
+                this.files.splice(index, 1);
+                this.active = -1
+            }
+        },
+        mounted: function () {
+            // console.log('selectFile mount')
+        }
+    }
+</script>
+
+<style>
+.selectFile {
+    margin-top: 20px;
+    margin-left: 10px;
+    position: relative;
+}
+.selectFile .btn-input {
+}
+.selectFile .input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 78px;
+    height: 32px;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: unset;
+}
+
+/* 文本显示设置 */
+.selectFile .file-list {
+    margin-top: 10px;
+    width: 300px;
+}
+
+.selectFile .file-list .item {
+    line-height: 28px;
+    height: 32px;
+    width: 100%;
+    color: #444;
+    padding: 0 10px;
+}
+
+.selectFile .file-list .item .name {
+    display: inline-block;
+    width: calc(100% - 50px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.selectFile .file-list .item .icon {
+    opacity: 0.5;
+    font-size: 14px;
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.selectFile .file-list .item .delete {
+    float: right;
+    opacity: 0.6;
+    font-size: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.selectFile .file-list .item:hover {
+    background-color: rgba(0, 150, 136, 0.05);
+}
+
+/* 图片显示设置 */
+.selectFile .pic-list {
+    margin-top: 10px;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    width: 522px;
+}
+
+.selectFile .pic-list > .item {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    position: relative;
+}
+
+.selectFile .pic-list .item .img {
+    height: 100%;
+    width: 100%;
+}
+
+.selectFile .pic-list .item .delete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    color: rgba(0, 0, 0, .8);
+    opacity: 0.6;
+    font-size: 100px;
+    padding-left: 13px;
+}
+</style>

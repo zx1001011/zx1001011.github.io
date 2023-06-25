@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link id="bootstrap-rtl-link" href="../../assets/css/skins/darkblue.min.css" rel="stylesheet"/>
+    <link href="../../assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="../../assets/css/weather-icons.min.css" rel="stylesheet"/>
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="../../assets/css/beyond.min.css" rel="stylesheet"/>
+    <link href="../../assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="../../assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="../../assets/css/animate.min.css" rel="stylesheet"/>
+    <link id="skin-link" href="../../assets/css/skins/green.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../../bootstrap/css/scroll.css" rel="stylesheet">
+    <link href="../../bootstrap/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+    <link href="../../bootstrap/css/zTreeStyle/metroStyle/metroStyle.css" rel="stylesheet">
+    <link href="../../bootstrap/css/chosen.css" rel="stylesheet">
+    <link href="../../bootstrap/css/datetimepicker.css" rel="stylesheet">
+    <link href="../../bootstrap/multiselect2side/css/jquery.multiselect2side.css" rel="stylesheet">
+    <link href="../../js/jquery/jquery.jsonview.css" rel="stylesheet">
+    <link href="../../assets/layui/css/layui.css" rel="stylesheet"/>
+    <link href="../../home/bander/global.css" rel="stylesheet"/>
+    <!-- 兼容ie浏览器转换es6 -->
+    <script src="https://cdn.bootcss.com/babel-polyfill/6.23.0/polyfill.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-core/5.8.23/browser.min.js"></script>
+    <!-- 先引入 Vue -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入 http-vue-loader -->
+    <script src="https://unpkg.com/http-vue-loader"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+<!--        <table class="layui-table dataTable">-->
+<!--            <thead>-->
+<!--                <tr>-->
+<!--                    <th>网关名</th>-->
+<!--                    <th>适配器</th>-->
+<!--                    <th>SNG号</th>-->
+<!--                    <th>连接状态</th>-->
+<!--                    <th>创建时间</th>-->
+<!--                    <th>操作</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody id="s_gatetable">-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--        <c :total="pagination.total" v-cloak></c>-->
+        <!-- 需要实际测试一下 -->
+<!--        分页器-->
+<!--        <pager v-cloak :total="pagination.total" :pagesize="pagination.pagesize" :currentpage="pagination.curpage"-->
+<!--            :maxdisplay="pagination.maxdisplay" @change-data="getTableData"></pager>-->
+<!--下拉树-->
+<!--        <selectree :multi="false" :data="data" name="" @change="change1"></selectree>-->
+<!--        <selectree :multi="true" :data="data1" name="选择组织" @change="change1"-->
+<!--                   parent-name="pid" key-name="id" root-id="ROOT"></selectree>-->
+        <div id="unitSelectTree"></div>
+        <div id="unitSelectTree1"></div>
+<!--    文件上传-->
+<!--        <selectfile :multi="false" @change="changeFile1" type="picture"></selectfile>-->
+<!--        <selectfile :multi="true" @change="changeFile"></selectfile>-->
+        <div id="selectFile"></div>
+        <div id="selectFile1"></div>
+    </div>
+</body>
+<script type="text/javascript" src="../../assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../../js/jquery/mustache.js"></script>
+<script src="../../bootstrap/js/jquery.ztree.all-3.5.js"></script>
+<script src="../../bootstrap/js/jquery.ztree.core-3.5.js"></script>
+<script src="../../bootstrap/js/jquery.ztree.exedit-3.5.js"></script>
+
+<!-- vue 如果使用 type="text/babel" 就会导致 jquery 事件绑定的全部失效（暂不知问题是何处，
+    方向怀疑：编译之后，vue 虚拟 dom 刷新，覆盖掉了 jquery 的绑定事件）或者 vue 最后引入，也会导致
+     jquery 失效 -->
+<!--<script>-->
+<!--    // 使用httpVueLoader-->
+<!--    Vue.use(httpVueLoader);-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: function () {-->
+<!--            return {-->
+<!--                visible: false,-->
+<!--                pagination: {-->
+<!--                    total: 199,-->
+<!--                    pagesize: 10,-->
+<!--                    curpage: 1,-->
+<!--                    maxdisplay: 5-->
+<!--                },-->
+<!--                data: [-->
+<!--                    {-->
+<!--                    name: '',-->
+<!--                    id: 0,-->
+<!--                    pid: 'ROOT',-->
+<!--                },{-->
+<!--                    name: '香蕉',-->
+<!--                    id: 1,-->
+<!--                    pid: 'ROOT',-->
+<!--                },{-->
+<!--                    name: '梨',-->
+<!--                    id: 2,-->
+<!--                    pid: 'ROOT',-->
+<!--                },{-->
+<!--                    name: '苹果',-->
+<!--                    id: 3,-->
+<!--                    pid: 'ROOT',-->
+<!--                },{-->
+<!--                    name: '柚子',-->
+<!--                    id: 4,-->
+<!--                    pid: 'ROOT',-->
+<!--                },{-->
+<!--                    name: '火龙果',-->
+<!--                    id: 5,-->
+<!--                    pid: 'ROOT',-->
+<!--                }],-->
+<!--                data1: [-->
+<!--                    {-->
+<!--                    name: '全国',-->
+<!--                    pid: 'ROOT',-->
+<!--                    id: '1'-->
+<!--                },{-->
+<!--                    name: '江苏省',-->
+<!--                    pid: '1',-->
+<!--                    id: '2'-->
+<!--                },{-->
+<!--                    name: '北京市',-->
+<!--                    pid: '1',-->
+<!--                    id: '3'-->
+<!--                },{-->
+<!--                    name: '上海市',-->
+<!--                    pid: '1',-->
+<!--                    id: '4'-->
+<!--                },{-->
+<!--                    name: '南京市',-->
+<!--                    pid: '2',-->
+<!--                    id: '5'-->
+<!--                },{-->
+<!--                    name: '浦口区',-->
+<!--                    pid: '5',-->
+<!--                    id: '6'-->
+<!--                }],-->
+<!--                fileList: []-->
+<!--            }-->
+<!--        },-->
+<!--        components: {-->
+<!--            // 将组建加入组建库-->
+<!--            // 'pager': httpVueLoader('pager.vue'),-->
+<!--            'c': httpVueLoader('c.vue'),-->
+<!--            'selectfile': httpVueLoader('selectFile.vue')-->
+<!--            // 'selectree': httpVueLoader('selectTree.vue')-->
+<!--        },-->
+<!--        methods: {-->
+<!--            getTableData: function (page, limit) {-->
+<!--                // console.log('请求 第' + page + '页的数据,每页是' + limit + '条')-->
+<!--                var start = (page - 1) * limit // 从 0 开始-->
+<!--                // console.log('start : ' + start)-->
+<!--                var data = new FormData()-->
+<!--                data.append('start', start)-->
+<!--                data.append('limit', limit)-->
+<!--                data.append('keyword', '')-->
+<!--                data.append('unitid', '')-->
+<!--                var _this = this-->
+<!--                axios({-->
+<!--                    method: 'post',-->
+<!--                    url: 'http://localhost:8098/adp_war_exploded/gate/getAllGate',-->
+<!--                    data: data-->
+<!--                }).then(function (res) {-->
+<!--                    // 暂时不用 vue 的，-->
+<!--                    var temp =-->
+<!--                        '{{#data}}<tr><td>{{name}}</td><td>{{adapter}}</td><td>{{sng}}</td>' +-->
+<!--                        '<td id="{{id}}" class="td-gds hidden"><span class="badge badge-empty"></span><span class="databox-inlinetext uppercase darkgray margin-left-5">正在检测</span></td>' +-->
+<!--                        '<td>{{createtime}}</td>' +-->
+<!--                        '<td><a id="{{id}}" class="btn btn-default btn-xs black delgate btn-delete-c1">删除</a>  ' +-->
+<!--                        '<a id="{{id}}" class="btn btn-default btn-xs black updategate btn-change-c1">修改</a> ' +-->
+<!--                        '<a id="{{id}}" class="btn btn-default btn-xs black gatemore btn-manage-c1">传感器组管理</a></td></tr>{{/data}}';-->
+<!--                    var views = Mustache.render(temp, res.data);-->
+<!--                    _this.pagination.total = res.data.count-->
+<!--                    $("#s_gatetable").html(views);-->
+<!--                })-->
+<!--            },-->
+<!--            change1: function (item) {-->
+<!--                console.log('change to : ', item)-->
+<!--            },-->
+<!--            changeFile1: function (fileList) {-->
+<!--                console.log('changeFile1', fileList)-->
+<!--            },-->
+<!--            changeFile: function (fileList) {-->
+<!--                console.log('changeFile', fileList)-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<script src="../bander/selectTree.js"></script>
+<script>
+    // 调用下拉树
+    var select = new Selectree();
+    select.render('#unitSelectTree', {
+        'multi': true,
+        'data': [
+            {
+                name: '全国',
+                pid: 'ROOT',
+                id: '1'
+            },{
+                name: '江苏省',
+                pid: '1',
+                id: '2'
+            },{
+                name: '北京市',
+                pid: '1',
+                id: '3'
+            },{
+                name: '上海市',
+                pid: '1',
+                id: '4'
+            },{
+                name: '南京市',
+                pid: '2',
+                id: '5'
+            },{
+                name: '浦口区',
+                pid: '5',
+                id: '6'
+            }],
+        'name': '选择组织',
+        'parentName': 'pid',
+        'keyName': 'id',
+        'rootId': 'ROOT'
+    }, function (item) {
+        console.log('你选择了', item)
+    });
+    select.render('#unitSelectTree1', {
+        'data': [
+            {
+                name: '',
+                id: 0,
+                pid: 'ROOT',
+            },{
+                name: '香蕉',
+                id: 1,
+                pid: 'ROOT',
+            },{
+                name: '梨',
+                id: 2,
+                pid: 'ROOT',
+            },{
+                name: '苹果',
+                id: 3,
+                pid: 'ROOT',
+            },{
+                name: '柚子',
+                id: 4,
+                pid: 'ROOT',
+            },{
+                name: '火龙果',
+                id: 5,
+                pid: 'ROOT',
+            }],
+        'keyName': 'id',
+    }, function (item) {
+        console.log('你选择了', item)
+    })
+</script>
+<script src="../bander/selectFile.js"></script>
+<script>
+    var select = new SelectFile();
+    select.render('#selectFile', {
+        files: [],
+        multi: true
+    }, function (fileList) {
+        console.log('changeFile ', fileList)
+    });
+    select.render('#selectFile1', { type: 'picture' }, function (fileList) {
+        console.log('changeFile ', fileList)
+    })
+</script>
+
+</html>
